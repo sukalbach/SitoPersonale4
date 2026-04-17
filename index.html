@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="default">
+<!--
+    PERSONALIZZAZIONE RAPIDA:
+    
+    1. TEMA: cambia data-theme="default" qui sopra con:
+       ocean, sunset, forest, lavender, mono
+    
+    2. DARK MODE: il bottone 🌙 in alto a destra
+    
+    3. FONT: cambia i link Google Fonts qui sotto
+    
+    4. CONTENUTI: cerca i commenti "MODIFICA" nel codice
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elia Baronio — Portfolio</title>
+
+    <!-- MODIFICA: Cambia i font qui se vuoi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <!-- MODIFICA: il tuo nome -->
+            <a href="#" class="nav-brand">Elia.</a>
+
+            <button class="nav-burger" id="navBurger" aria-label="Apri menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#bio">Bio</a></li>
+                <li><a href="#passioni">Passioni</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="./stage.html">Stage</a></li>
+                <li><a href="./extra.html">Extra</a></li>
+            </ul>
+
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">🌙</button>
+        </div>
+    </nav>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+
+        <div class="hero-content">
+            <!-- MODIFICA: il tuo badge, nome e descrizione -->
+            <h1 class="reveal reveal-delay-1">Elia Baronio</h1>
+            <p class="hero-sub reveal reveal-delay-2">Tecnico Informatico</p>
+            <div class="hero-cta reveal reveal-delay-3">
+                <a href="#cv" class="btn-primary-custom">Vai al CV ↓</a>
+                <a href="./doc/Cv.pdf" target="_blank" class="btn-outline-custom">Scarica PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== BIO ====== -->
+    <section class="section" id="bio">
+        <div class="section-container">
+            <div class="bio-grid">
+                <div class="bio-image reveal-left">
+                    <div class="bio-image-frame">
+                        <!-- MODIFICA: sostituisci con la tua foto (./img/foto.jpg) -->
+                        <img src="https://placehold.co/500x625/1a1a2e/e94560?text=La+tua+foto" alt="Foto profilo">
+                    </div>
+                </div>
+                <div class="bio-text-area reveal-right">
+                    <div class="section-header">
+                        <span class="section-label">Chi sono</span>
+                        <h2 class="section-title">Ciao, sono Elia</h2>
+                    </div>
+                    <!-- MODIFICA: scrivi la tua bio -->
+                    <p>
+                        Qui puoi scrivere qualcosa su di te: cosa ti piace dell'informatica, 
+                        come hai scelto questo percorso, e cosa vuoi fare dopo la qualifica. 
+                        Racconta chi sei in modo autentico.
+                    </p>
+                    <p>
+                        Un secondo paragrafo è utile per aggiungere dettagli: un progetto 
+                        a cui tieni, una competenza che vuoi sviluppare, o semplicemente 
+                        qualcosa che ti rende unico.
+                    </p>
+                    <!-- MODIFICA: le tue "etichette" -->
+                    <div class="bio-pills">
+                        <span class="bio-pill">🖥️ Hardware</span>
+                        <span class="bio-pill">🌐 Networking</span>
+                        <span class="bio-pill">🧱 Lego</span>
+                        <span class="bio-pill">🚗 Auto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PASSIONI ====== -->
+    <section class="section section-alt" id="passioni">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Cosa mi appassiona</span>
+                <h2 class="section-title">Le mie Passioni</h2>
+                <p class="section-desc">Le cose che amo fare nel tempo libero e che mi definiscono</p>
+            </div>
+
+            <div class="passions-grid">
+
+                <!-- MODIFICA: Card 1 — cambia immagine, categoria, titolo e testo -->
+                <div class="passion-card reveal reveal-delay-1">
+                    <div class="passion-card-img">
+                        <img src="./img/5006921.png" alt="Lego">
+                    </div>
+                    <div class="passion-card-body">
+                        <span class="passion-card-tag">Tempo libero</span>
+                        <h3>Lego</h3>
+                        <p>Mi piace costruire e scoprire il mondo con i mattoncini. Ogni set è una sfida diversa.</p>
+                    </div>
+                </div>
+
+                <!-- MODIFICA: Card 2 -->
+                <div class="passion-card reveal reveal-delay-2">
+                    <div class="passion-card-img">
+                        <img src="./img/1.png" alt="Passione 2">
+                    </div>
+                    <div class="passion-card-body">
+                        <span class="passion-card-tag">Hobby</span>
+                        <h3>Nome Passione</h3>
+                        <p>Descrivi questa passione in una o due frasi. Cosa ti attrae? Quando hai iniziato?</p>
+                    </div>
+                </div>
+
+                <!-- MODIFICA: Card 3 -->
+                <div class="passion-card reveal reveal-delay-3">
+                    <div class="passion-card-img">
+                        <img src="./img/5006921.png" alt="Passione 3">
+                    </div>
+                    <div class="passion-card-body">
+                        <span class="passion-card-tag">Sport</span>
+                        <h3>Nome Passione</h3>
+                        <p>Descrivi questa passione in una o due frasi. Puoi aggiungere quante card vuoi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CV ====== -->
+    <section class="section" id="cv">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Il mio percorso</span>
+                <h2 class="section-title">Curriculum Vitae</h2>
+            </div>
+
+            <div class="cv-paper reveal">
+                <!-- MODIFICA: intestazione CV -->
+                <div class="cv-header">
+                    <div>
+                        <h2 class="cv-name">Federico Pozzi</h2>
+                        <p class="cv-role">Operatore Informatico</p>
+                    </div>
+                    <div class="cv-contact-mini">
+                        <span>Via Garibaldi 4, Capiago Intimiano</span>
+                        <span>+39 351 522 3891</span>
+                        <span>eliabaronioo@gmail.com</span>
+                    </div>
+                </div>
+
+                <!-- Esperienza -->
+                <div class="cv-section-title">Esperienza Lavorativa</div>
+
+                <!-- MODIFICA: aggiungi le tue esperienze -->
+                <div class="cv-entry">
+                    <span class="cv-entry-title">Stage - riparazioni</span>
+                    <span class="cv-entry-place"> · Prestige Group </span>
+                    <span class="cv-entry-date">Settembre 2025 — Dicembre 2025</span>
+                    <p class="cv-entry-desc">Riparazione computer.</p>
+                </div>
+
+                <div class="cv-entry">
+                    <span class="cv-entry-title">Stage</span>
+                    <span class="cv-entry-place"> · Pine-apple</span>
+                    <span class="cv-entry-date">Novembre 2024 — Marzo 2025</span>
+                    <p class="cv-entry-desc">Creazione gioco di carte</p>
+                </div>
+
+                <!-- Istruzione -->
+                <div class="cv-section-title">Istruzione</div>
+
+                <div class="cv-entry">
+                    <span class="cv-entry-title">Operatore Informatico</span>
+                    <span class="cv-entry-place"> · Immaginazione e Lavoro IEFP</span>
+                    <span class="cv-entry-date">Settembre 2023 — Giugno 2026</span>
+                </div>
+
+                <div class="cv-entry">
+                    <span class="cv-entry-title">Qualifica altra scuola</span>
+                    <span class="cv-entry-place"> · Nome altra scuola</span>
+                    <span class="cv-entry-date">Settembre anno — Giugno anno</span>
+                </div>
+
+                <!-- Lingue -->
+                <div class="cv-section-title">Lingue</div>
+
+                <!-- MODIFICA: le tue lingue e livelli (width della barra: 100% = nativo, 80% = avanzato, 60% = intermedio, 40% = base) -->
+                <div class="cv-lang">
+                    <span class="cv-lang-name">Italiano</span>
+                    <div class="cv-lang-level">
+                        <div class="cv-lang-bar"><div class="cv-lang-bar-fill" style="width: 100%"></div></div>
+                        <span class="cv-lang-label">Madrelingua</span>
+                    </div>
+                </div>
+                <div class="cv-lang">
+                    <span class="cv-lang-name">Inglese</span>
+                    <div class="cv-lang-level">
+                        <div class="cv-lang-bar"><div class="cv-lang-bar-fill" style="width: 85%"></div></div>
+                        <span class="cv-lang-label">B1</span>
+                    </div>
+                </div>
+                <div class="cv-lang">
+                    <span class="cv-lang-name">Francese</span>
+                    <div class="cv-lang-level">
+                        <div class="cv-lang-bar"><div class="cv-lang-bar-fill" style="width: 55%"></div></div>
+                        <span class="cv-lang-label">Intermedio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;" class="reveal">
+                <a href="./doc/Cv.pdf" target="_blank" class="btn-primary-custom">Scarica il CV →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div>
+                    <!-- MODIFICA: il tuo nome e descrizione -->
+                    <p class="footer-brand">Elia Baronio</p>
+                    <p class="footer-desc">
+                        Operatore Informatico — Sito realizzato come progetto di fine percorso 
+                        presso Immaginazione e Lavoro.
+                    </p>
+                </div>
+                <div>
+                    <p class="footer-heading">Pagine</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="./pages/stage.html">Stage</a></li>
+                        <li><a href="./pages/extra.html">Extra</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatti</p>
+                    <!-- MODIFICA: i tuoi contatti -->
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                        <span>Via Garibaldi 4, Capiago Intimiano</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/></svg>
+                        <span>+39 351 522 3891</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+                        <span>eliabaronioo@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Elia Baronio · Immaginazione e Lavoro</span>
+                <img src="./img/logo.webp" class="footer-logo" alt="Logo scuola">
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

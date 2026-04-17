@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elia Baronio — Stage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-brand">Elia.</a>
+            <button class="nav-burger" id="navBurger" aria-label="Apri menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#" class="active">Stage</a></li>
+                <li><a href="./extra.html">Extra</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">🌙</button>
+        </div>
+    </nav>
+
+    <!-- ====== PAGE HERO ====== -->
+    <section class="page-hero">
+        <div class="hero-pattern"></div>
+        <div class="section-container">
+            <h1 class="reveal">Esperienza di Stage</h1>
+            <p class="hero-sub reveal reveal-delay-1">
+                Lo stage curriculare è un ponte tra scuola e lavoro: un'esperienza formativa 
+                per mettere in pratica le competenze acquisite durante il percorso di studi 
+                e scoprire il mondo professionale.
+            </p>
+        </div>
+    </section>
+
+    <!-- ====== STAGE CARDS ====== -->
+    <section class="section">
+        <div class="section-container" style="max-width: 900px;">
+
+            <!-- MODIFICA: Stage 1 -->
+            <div class="stage-card open reveal">
+                <div class="stage-card-header">
+                    <div>
+                        <h3>Prestige Group Srl</h3>
+                        <span class="stage-date">Marzo 2024 — Maggio 2024</span>
+                    </div>
+                    <div class="stage-card-toggle">+</div>
+                </div>
+                <div class="stage-card-body">
+                    <div class="stage-grid">
+                        <div class="stage-map-frame">
+                            <!-- MODIFICA: embed Google Maps del tuo stage -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.1806644297835!2d9.271630276173406!3d45.48630653196361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c62d986f62eb%3A0xa89ce23527aa8575!2sPrestige%20Group%20Srl!5e0!3m2!1sit!2sit!4v1763026116527!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="stage-relazione">
+                            <!-- MODIFICA: scrivi la tua relazione di stage -->
+                            <h4>Relazione</h4>
+                            <p>
+                                Descrivi l'azienda: di cosa si occupa, quanti dipendenti ha, 
+                                in che zona si trova. Poi racconta le attività che hai svolto 
+                                durante il periodo di stage.
+                            </p>
+                            <p style="margin-top: 1rem;">
+                                <strong>Attività principali:</strong> riparazione hardware, 
+                                gestione punto vendita, installazione software su PC e notebook.
+                            </p>
+                            <p style="margin-top: 1rem;">
+                                <strong>Competenze acquisite:</strong> diagnostica hardware, 
+                                relazione con il cliente, gestione autonoma delle riparazioni.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODIFICA: Stage 2 (duplica questo blocco per aggiungerne altri) -->
+            <div class="stage-card reveal reveal-delay-1">
+                <div class="stage-card-header">
+                    <div>
+                        <h3>Nome altro posto stage</h3>
+                        <span class="stage-date">Mese anno — Mese anno</span>
+                    </div>
+                    <div class="stage-card-toggle">+</div>
+                </div>
+                <div class="stage-card-body">
+                    <div class="stage-grid">
+                        <div class="stage-map-frame">
+                            <!-- MODIFICA: mappa del secondo stage -->
+                            <iframe src="about:blank" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="stage-relazione">
+                            <h4>Relazione</h4>
+                            <p>Scrivi qui la relazione del secondo stage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====== COS'È UNO STAGE (sezione di approfondimento) ====== -->
+    <section class="section section-alt">
+        <div class="section-container" style="max-width: 800px;">
+            <div class="section-header center reveal">
+                <span class="section-label">Approfondimento</span>
+                <h2 class="section-title">Cos'è lo stage curriculare</h2>
+            </div>
+            <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        Lo stage ha una durata prestabilita dal piano formativo e non costituisce 
+                        un rapporto di lavoro. Serve a far conoscere il mondo professionale, le sue 
+                        regole, i ritmi e le responsabilità. Lo studente partecipa alle attività 
+                        quotidiane dell'azienda, osserva, collabora e impara.
+                    </p>
+                </div>
+                <div>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        Alla fine dell'esperienza si redige una relazione dove si descrivono le 
+                        attività svolte e le competenze acquisite. Lo stage curriculare è un ponte 
+                        tra scuola e lavoro, utile per orientarsi nel futuro professionale e comprendere 
+                        le proprie attitudini.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-brand">Federico Pozzi</p>
+                    <p class="footer-desc">Operatore Informatico — Immaginazione e Lavoro</p>
+                </div>
+                <div>
+                    <p class="footer-heading">Pagine</p>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="#">Stage</a></li>
+                        <li><a href="./extra.html">Extra</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatti</p>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                        <span>Via blablabla 88, Paese</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+                        <span>federico.pozzi@immaginazioneelavoro.it</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Federico Pozzi · Immaginazione e Lavoro</span>
+                <img src="./img/logo.webp" class="footer-logo" alt="Logo scuola">
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

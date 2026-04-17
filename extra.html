@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elia Baronio — Extra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-brand">Elia.</a>
+            <button class="nav-burger" id="navBurger" aria-label="Apri menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./stage.html">Stage</a></li>
+                <li><a href="#" class="active">Extra</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">🌙</button>
+        </div>
+    </nav>
+
+    <!-- ====== PAGE HERO ====== -->
+    <section class="page-hero">
+        <div class="hero-pattern"></div>
+        <div class="section-container">
+            <h1 class="reveal">Extra</h1>
+            <p class="hero-sub reveal reveal-delay-1">
+                Tutto quello che non rientra nelle altre pagine ma che fa parte di me
+            </p>
+        </div>
+    </section>
+
+    <!-- ====== CALCOLATORE PRESENZE ====== -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Tool</span>
+                <h2 class="section-title">Calcolatore Presenze</h2>
+                <p class="section-desc">Inserisci i giorni di assenza per vedere la percentuale di presenze</p>
+            </div>
+
+            <div class="presenze-card reveal">
+                <label for="progresso">Giorni di assenza</label>
+                <div class="presenze-input">
+                    <input type="number" id="progresso" min="0" value="0" placeholder="0">
+                    <button class="btn-calcola" onclick="calcolaPresenze()">Calcola</button>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="barraFill"></div>
+                    </div>
+                    <p class="progress-label" id="percentualeText">Presenze: 100%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== GALLERY / CONTENUTO LIBERO ====== -->
+    <!--
+        Questa sezione è uno spazio libero. Puoi usarla per:
+        - Una gallery di foto dei tuoi progetti
+        - Certificazioni ottenute (ECDL, ecc.)
+        - Link ai tuoi profili (GitHub, LinkedIn)
+        - Qualsiasi cosa ti rappresenti
+        
+        Di seguito c'è un esempio di gallery. 
+        Sostituisci le immagini con le tue.
+    -->
+    <section class="section section-alt">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Spazio libero</span>
+                <h2 class="section-title">I miei Progetti</h2>
+                <p class="section-desc">Una raccolta di lavori e cose a cui tengo</p>
+            </div>
+
+            <!-- MODIFICA: sostituisci le immagini e i testi -->
+            <div class="gallery-grid">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <img src="https://placehold.co/400x400/1a1a2e/e94560?text=Progetto+1" alt="Progetto 1">
+                    <div class="gallery-item-overlay">
+                        <span>Progetto 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <img src="https://placehold.co/400x400/16213e/e94560?text=Progetto+2" alt="Progetto 2">
+                    <div class="gallery-item-overlay">
+                        <span>Progetto 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <img src="https://placehold.co/400x400/0f3460/e94560?text=Progetto+3" alt="Progetto 3">
+                    <div class="gallery-item-overlay">
+                        <span>Progetto 3</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal reveal-delay-4">
+                    <img src="https://placehold.co/400x400/533483/e94560?text=Progetto+4" alt="Progetto 4">
+                    <div class="gallery-item-overlay">
+                        <span>Progetto 4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SEZIONE TESTO LIBERO ====== -->
+    <section class="section">
+        <div class="section-container" style="max-width: 700px;">
+            <div class="section-header center reveal">
+                <span class="section-label">Personalizza</span>
+                <h2 class="section-title">Aggiungi quello che vuoi</h2>
+            </div>
+            <div class="reveal" style="text-align: center;">
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                    Questa pagina è il tuo spazio creativo. Puoi aggiungere sezioni su: 
+                    certificazioni, competenze tecniche, progetti scolastici, hobby particolari, 
+                    o qualsiasi cosa ti renda unico. Duplica le sezioni che ti piacciono 
+                    e modifica i contenuti.
+                </p>
+                <a href="../index.html" class="btn-primary-custom">← Torna alla Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-brand">Federico Pozzi</p>
+                    <p class="footer-desc">Operatore Informatico — Immaginazione e Lavoro</p>
+                </div>
+                <div>
+                    <p class="footer-heading">Pagine</p>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./stage.html">Stage</a></li>
+                        <li><a href="#">Extra</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatti</p>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                        <span>Via blablabla 88, Paese</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+                        <span>federico.pozzi@immaginazioneelavoro.it</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Federico Pozzi · Immaginazione e Lavoro</span>
+                <img src="../img/logo.webp" class="footer-logo" alt="Logo scuola">
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
