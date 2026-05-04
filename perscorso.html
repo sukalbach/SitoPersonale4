@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elia Baronio — Percorso Scolastico</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        /* ======================================================
+           STILI SPECIFICI — PERCORSO SCOLASTICO
+           ====================================================== */
+
+        /* === IMMAGINE STRADA DISEGNATA === */
+        .strada-section {
+            padding: 5rem 0;
+        }
+
+        .strada-frame {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        .strada-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Badge sovrapposto all'immagine */
+        .strada-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* Cornice decorativa attorno all'immagine */
+        .strada-wrapper {
+            position: relative;
+        }
+
+        .strada-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 2px dashed var(--accent);
+            border-radius: calc(var(--radius-lg) + 12px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .strada-frame {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === TIMELINE PERCORSO === */
+        .timeline {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Linea verticale centrale */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                var(--accent) 10%,
+                var(--accent) 90%,
+                transparent
+            );
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            align-items: start;
+            margin-bottom: 3rem;
+            gap: 0;
+        }
+
+        /* Pallino centrale */
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 2px var(--accent);
+            justify-self: center;
+            margin-top: 1.2rem;
+            position: relative;
+            z-index: 1;
+            transition: transform var(--duration-fast) var(--ease-spring);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.4);
+        }
+
+        /* Contenuto sinistra (anni pari) */
+        .timeline-left {
+            padding-right: 2rem;
+            text-align: right;
+        }
+
+        /* Contenuto destra (anni dispari) */
+        .timeline-right {
+            padding-left: 2rem;
+        }
+
+        /* Le card vuote occupano lo spazio ma non mostrano nulla */
+        .timeline-left:empty,
+        .timeline-right:empty {
+            display: block;
+        }
+
+        .timeline-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.4rem 1.6rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--duration-normal) var(--ease-spring),
+                        box-shadow var(--duration-normal) var(--ease-out),
+                        border-color var(--duration-fast);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .timeline-anno {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .timeline-titolo {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-luogo {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        /* Badge tipo evento */
+        .timeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-badge.qualifica {
+            background: hsla(145, 60%, 40%, 0.12);
+            color: hsl(145, 60%, 35%);
+        }
+
+        .timeline-badge.formazione {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .timeline-badge.stage {
+            background: hsla(30, 80%, 50%, 0.12);
+            color: hsl(30, 70%, 40%);
+        }
+
+        html[data-dark] .timeline-badge.qualifica {
+            background: hsla(145, 60%, 40%, 0.2);
+            color: hsl(145, 55%, 55%);
+        }
+
+        html[data-dark] .timeline-badge.stage {
+            background: hsla(30, 80%, 50%, 0.18);
+            color: hsl(30, 80%, 65%);
+        }
+
+        /* === CITAZIONE ISPIRAZIONALE === */
+        .quote-block {
+            background: var(--bg-elevated);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 2rem 2.5rem;
+            max-width: 650px;
+            margin: 0 auto;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.15;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .quote-author {
+            display: block;
+            font-style: normal;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        /* === COMPETENZE ACQUISITE === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-chip {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform var(--duration-fast) var(--ease-spring),
+                        border-color var(--duration-fast),
+                        box-shadow var(--duration-fast);
+        }
+
+        .skill-chip:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-chip-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .skill-chip-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* === RESPONSIVE TIMELINE === */
+        @media (max-width: 700px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 40px 1fr;
+                grid-template-areas: "dot content";
+            }
+
+            .timeline-dot {
+                grid-area: dot;
+                justify-self: start;
+                margin-left: 4px;
+            }
+
+            .timeline-left {
+                display: none;
+            }
+
+            .timeline-right {
+                grid-area: content;
+                padding-left: 1rem;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            /* Quando il contenuto è nella colonna sinistra, spostalo a destra su mobile */
+            .timeline-item .timeline-left .timeline-card {
+                display: none;
+            }
+
+            /* Override: mostra tutto a destra su mobile */
+            .timeline-item.left-content .timeline-left {
+                display: none;
+            }
+
+            .timeline-item.left-content .timeline-right {
+                grid-area: content;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-brand">Elia.</a>
+            <button class="nav-burger" id="navBurger" aria-label="Apri menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./stage.html">Stage</a></li>
+                <li><a href="./extra.html">Extra</a></li>
+                <li><a href="#" class="active">Percorso</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">🌙</button>
+        </div>
+    </nav>
+
+    <!-- ====== PAGE HERO ====== -->
+    <section class="page-hero">
+        <div class="hero-pattern"></div>
+        <div class="section-container">
+            <h1 class="reveal">Il mio Percorso</h1>
+            <p class="hero-sub reveal reveal-delay-1">
+                Ogni tappa ha lasciato un segno: le persone incontrate, 
+                le sfide superate e le competenze costruite giorno dopo giorno
+            </p>
+        </div>
+    </section>
+
+    <!-- ====== IMMAGINE STRADA DISEGNATA ====== -->
+    <section class="strada-section section">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">La mia mappa</span>
+                <h2 class="section-title">La strada che ho percorso</h2>
+                <p class="section-desc">
+                    Un disegno che racconta il viaggio — fatto a mano, 
+                    con tutti i suoi bivi, salite e traguardi
+                </p>
+            </div>
+
+            <div class="strada-wrapper reveal">
+                <div class="strada-frame">
+                    <!--
+                        MODIFICA: sostituisci il src con il percorso della tua immagine.
+                        Esempio: src="./img/strada.jpg"  oppure  src="./img/percorso.png"
+                        
+                        L'immagine va salvata nella cartella img/ del progetto.
+                        Dimensione consigliata: almeno 900×500 px, formato JPG o PNG.
+                    -->
+                    <img
+                        src="./img/Il mio percorso.png"
+                        alt="La mia strada scolastica — disegno originale"
+                    >
+                    <span class="strada-badge">Disegno originale · 2026</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====== TIMELINE PERCORSO ====== -->
+    <section class="section section-alt">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Anno per anno</span>
+                <h2 class="section-title">Le tappe del percorso</h2>
+                <p class="section-desc">Dal primo giorno di scuola fino alla qualifica</p>
+            </div>
+
+            <div class="timeline">
+
+                <!-- TAPPA 1 — a sinistra -->
+                <!-- MODIFICA: anno, titolo, istituto, descrizione -->
+                <div class="timeline-item left-content reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-card">
+                            <span class="timeline-badge formazione">📚 Formazione</span>
+                            <span class="timeline-anno">2021 — 2022</span>
+                            <div class="timeline-titolo">Licenza Media</div>
+                            <div class="timeline-luogo">Scuola Media "Arturo Toscanini"</div>
+                            <p class="timeline-desc">
+                                Conclusione del ciclo scolastico obbligatorio. 
+                                Primi approcci al mondo dell'informatica e scelta 
+                                del percorso professionale.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right"></div>
+                </div>
+
+                <!-- TAPPA 2 — a destra -->
+                <div class="timeline-item reveal reveal-delay-1">
+                    <div class="timeline-left"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                        <div class="timeline-card">
+                            <span class="timeline-badge formazione">🖥️ Primo anno</span>
+                            <span class="timeline-anno">Settembre 2022 — Giugno 2023</span>
+                            <div class="timeline-titolo">Primo anno — Operatore Informatico</div>
+                            <div class="timeline-luogo">Magistri</div>
+                            <p class="timeline-desc">
+                                Inizio del percorso triennale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAPPA 3 — a sinistra -->
+                <div class="timeline-item left-content reveal reveal-delay-2">
+                    <div class="timeline-left">
+                        <div class="timeline-card">
+                            <span class="timeline-badge formazione">🔧 Secondo anno</span>
+                            <span class="timeline-anno">Settembre 2023 — Giugno 2024</span>
+                            <div class="timeline-titolo">Secondo anno — Operatore Informatico</div>
+                            <div class="timeline-luogo">Magistri</div>
+                            <p class="timeline-desc">
+                                Secondo anno.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right"></div>
+                </div>
+
+                 <!-- TAPPA 4 — a destra: primo stage -->
+                
+
+
+                    <!-- TAPPA 5 — a sinistra: terzo anno -->
+                <div class="timeline-item left-content reveal reveal-delay-2">
+                    <div class="timeline-left">
+                        <div class="timeline-card">
+                            <span class="timeline-badge formazione">🎓 Terzo anno</span>
+                            <span class="timeline-anno">Settembre 2024 — Giugno 2025</span>
+                            <div class="timeline-titolo">Terzo anno — Operatore Informatico</div>
+                            <div class="timeline-luogo">Immaginazione e Lavoro IEFP</div>
+                            <p class="timeline-desc">
+                                Cambio di scuola. Anno conclusivo del triennio, con focus su 
+                                networking avanzato e preparazione all'esame di qualifica.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right"></div>
+                </div>
+
+                <div class="timeline-item reveal reveal-delay-1">
+                    <div class="timeline-left"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                        <div class="timeline-card">
+                            <span class="timeline-badge stage">🏢 Stage</span>
+                            <span class="timeline-anno">Aprile 2024 — Giugno 2024</span>
+                            <div class="timeline-titolo">Stage curriculare</div>
+                            <div class="timeline-luogo">Pine-apple</div>
+                            <p class="timeline-desc">
+                                Riparazione hardware, gestione punto vendita 
+                                e installazione software su PC e notebook.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- TAPPA 6 — a destra: qualifica -->
+                <div class="timeline-item reveal reveal-delay-1">
+                    <div class="timeline-left"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                        <div class="timeline-card">
+                            <span class="timeline-badge qualifica">✅ Qualifica</span>
+                            <span class="timeline-anno">Giugno 2025</span>
+                            <div class="timeline-titolo">Qualifica di Operatore Informatico</div>
+                            <div class="timeline-luogo">Immaginazione e Lavoro IEFP</div>
+                            <p class="timeline-desc">
+                                Conseguimento della qualifica professionale EQF3 
+                                come Operatore Informatico.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAPPA 7 — a sinistra: quarto anno -->
+                <div class="timeline-item left-content reveal reveal-delay-2">
+                    <div class="timeline-left">
+                        <div class="timeline-card">
+                            <span class="timeline-badge formazione">🚀 Quarto anno</span>
+                            <span class="timeline-anno">Settembre 2025 — Oggi</span>
+                            <div class="timeline-titolo">Quarto anno — Tecnico Informatico</div>
+                            <div class="timeline-luogo">Immaginazione e Lavoro IEFP</div>
+                            <p class="timeline-desc">
+                                Percorso di specializzazione come Tecnico Informatico, 
+                                con approfondimento di sistemistica e gestione reti.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right"></div>
+                </div>
+
+                <!-- TAPPA 8 — a destra: in corso -->
+                <div class="timeline-item reveal reveal-delay-1">
+                    <div class="timeline-left"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                        <div class="timeline-card">
+                            <span class="timeline-badge stage">🏢 Stage</span>
+                            <span class="timeline-anno">Settembre 2025 — Gennaio 2026</span>
+                            <div class="timeline-titolo">Stage quarto anno</div>
+                            <div class="timeline-luogo">Prestige group</div>
+                            <p class="timeline-desc">
+                                Riparazione hardware, gestione di PC e telefoni 
+                                in ambiente professionale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAPPA FINALE — traguardo futuro -->
+                <div class="timeline-item left-content reveal reveal-delay-2">
+                    <div class="timeline-left">
+                        <div class="timeline-card" style="border-color: var(--accent); background: var(--accent-soft);">
+                            <span class="timeline-badge qualifica">🏆 Prossimo traguardo</span>
+                            <span class="timeline-anno">Giugno 2026</span>
+                            <div class="timeline-titolo">Diploma di Tecnico Informatico</div>
+                            <div class="timeline-luogo">Immaginazione e Lavoro IEFP</div>
+                            <p class="timeline-desc">
+                                L'obiettivo finale: conseguire il diploma professionale 
+                                EQF4 come Tecnico Informatico.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-dot" style="background: var(--accent); box-shadow: 0 0 0 4px var(--accent-medium);"></div>
+                    <div class="timeline-right"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== COMPETENZE ACQUISITE ====== -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header center reveal">
+                <span class="section-label">Quello che ho imparato</span>
+                <h2 class="section-title">Competenze acquisite</h2>
+                <p class="section-desc">Le skill costruite tappa dopo tappa durante il percorso</p>
+            </div>
+
+            <!-- MODIFICA: aggiungi o rimuovi competenze -->
+            <div class="skills-grid">
+                <div class="skill-chip reveal reveal-delay-1">
+                    <span class="skill-chip-icon">🖥️</span>
+                    <span class="skill-chip-text">Manutenzione Hardware</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-2">
+                    <span class="skill-chip-icon">🌐</span>
+                    <span class="skill-chip-text">Reti e Networking</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-3">
+                    <span class="skill-chip-icon">⚙️</span>
+                    <span class="skill-chip-text">Sistemi Operativi</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-4">
+                    <span class="skill-chip-icon">📱</span>
+                    <span class="skill-chip-text">Riparazione Dispositivi</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-1">
+                    <span class="skill-chip-icon">💿</span>
+                    <span class="skill-chip-text">Installazione Software</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-2">
+                    <span class="skill-chip-icon">🛒</span>
+                    <span class="skill-chip-text">Gestione Punto Vendita</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-3">
+                    <span class="skill-chip-icon">🔒</span>
+                    <span class="skill-chip-text">Sicurezza Informatica</span>
+                </div>
+                <div class="skill-chip reveal reveal-delay-4">
+                    <span class="skill-chip-icon">🤝</span>
+                    <span class="skill-chip-text">Relazione con il Cliente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div>
+                    <p class="footer-brand">Elia Baronio</p>
+                    <p class="footer-desc">Tecnico Informatico — Immaginazione e Lavoro</p>
+                </div>
+                <div>
+                    <p class="footer-heading">Pagine</p>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./stage.html">Stage</a></li>
+                        <li><a href="./extra.html">Extra</a></li>
+                        <li><a href="#">Percorso</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatti</p>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                        <span>Via Garibaldi 4, Capiago Intimiano</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+                        <span>eliabaronioo@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Federico Pozzi · Immaginazione e Lavoro</span>
+                <img src="./img/logo.webp" class="footer-logo" alt="Logo scuola">
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
